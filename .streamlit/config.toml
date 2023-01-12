@@ -1,0 +1,13 @@
+[theme]
+
+#Primary accent color for the site
+primaryColor = "#20114e"
+
+# Backround color
+backgroundColor = "#060624"
+
+# Backround color for some widgets and sidebars
+secondaryBackgroundColor = "#586e75"
+
+# Color used for text
+textColor = "#fff"
