@@ -3,6 +3,10 @@ from pathlib import Path
 import streamlit as st
 from PIL import Image
 
+# importing the animation 
+import json
+from streamlit_lottie import st_lottie
+
 
 # Path settings
 
@@ -10,6 +14,7 @@ directory = Path(__file__).parent if '__file__' in locals() else Path.cwd()
 css_file = directory / 'styles' / 'main.css'
 pdf_file = directory / 'assets' / 'VerttiLeppikangas_cv.pdf'
 profile_pic = directory / 'assets' / 'cv_profile_pic.png'
+animated_waves = directory / 'assets' / 'waves.json'
 
 
 
@@ -82,38 +87,68 @@ st.write(
 # Education & work history 
 
 # job 1
+
+col5, col6 = st.columns(2, gap='small')
+
+with col5:
+    st.write('#')
+    st.subheader('Education & Work History')
+    st.write(
+        '''
+    2019-2022
+    - Graduated from Tuusula High School in 2022
+        - >Tutored during my 2nd year
+        - >Student council secretary
+    '''
+    )
+
+    # job 2
+    st.write('\n')
+    st.write(
+        '''
+    3/2022 - 6/2022
+    - Substitute teacher in the School Of Kellokoski  
+        - >Taught in primary school, middle school and high school
+    '''
+    )
+
+    # job 3
+    st.write('\n')
+    st.write(
+        '''
+    4/2022 - 5/2022
+    - Security guard 
+        - >Patrolled various structures and important warehouses
+        - >Ended early because of entrance exams for the uni'''
+    )
+
+# bringing the animation 
+
+with col6:
+
+    def load_lottiefile(filepath: str):
+        with open(filepath, "r") as f:
+            return json.load(f)
+
+
+    lottie_wave = load_lottiefile("assets/waves.json")
+
+    st_lottie(
+        lottie_wave,
+        speed=0.8,
+        reverse=False,
+        loop=True,
+        quality="low", # medium ; high
+        height=None,
+        width=None,
+        key=None,
+    )
+
 st.write('#')
-st.subheader('Education & Work History')
-st.write(
-    '''
-2019-2022
-- Graduated from Tuusula High School in 2022
-    - >Tutored during my 2nd year
-    - >Student council secretary
-'''
-)
 
-# job 2
-st.write('\n')
-st.write(
-    '''
-3/2022 - 6/2022
-- Substitute teacher in the School Of Kellokoski  
-    - >Taught in primary school, middle school and high school
- '''
-)
 
-# job 3
-st.write('\n')
-st.write(
-    '''
-4/2022 - 5/2022
-- Security guard 
-    - >Patrolled various structures and important warehouses
-    - >Ended early because of entrance exams for the uni'''
-)
 
-# About me and skills
+    # About me and skills
 
 st.write('#')
 st.write('---')
@@ -124,12 +159,11 @@ st.write(
 
 - I have a vast experience working with groups. That experience comes from high school and now the military where I just got promoted to corporal
     - >In both of these I've been part of responsible positions whether it was a tutor or a squad leader 
-    '''
+     '''
 )
 
 
 # My Future and skills
-
 
 st.write('#')
 
