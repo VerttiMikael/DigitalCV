@@ -98,7 +98,7 @@ st.write('\n')
 st.write(
     '''
 3/2022 - 6/2022
-- Subsitute teacher in the School Of Kellokoski  
+- Substitute teacher in the School Of Kellokoski  
     - >Taught in primary school, middle school and high school
  '''
 )
